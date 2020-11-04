@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>2d platformer Game</title>
+  <style>
+  *{
+    font-family:calibri;
+    
+  }
+  canvas{
+    border: 1px solid;
+    margin: 5px;
+  }
+  #cvs2{
+    border-radius:25px;
+   position:absolute;
+   right:6px;
+  }
+  #codeMyster{
+    position:absolute;
+    bottom:690px;
+    right:760px
+  }
+  </style>
+</head>
+<body>
+<center>
+ <canvas id=cvs width= 835px height= 701px> </canvas>
+ <canvas id = cvs2 width= 800 height = 100> </canvas> 
+ </center>
+
+
+
+<p id=codeMyster>
+code<b>M</b>yster
+</p>
+<script>
+const cvs = document.getElementById('cvs');
+const cxt = cvs.getContext('2d');
+
+
+
+const char = new Image();
+char.src = "https://raw.githubusercontent.com/StevePaget/Pygame_Functions/master/demos/images/links.gif";
+
+const bg1 = new Image();
+bg1.src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/627e91b1-1006-47bf-92b0-82f225867117/d9kpu7v-2a161877-7a14-4270-8f41-762b49d63512.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNjI3ZTkxYjEtMTAwNi00N2JmLTkyYjAtODJmMjI1ODY3MTE3XC9kOWtwdTd2LTJhMTYxODc3LTdhMTQtNDI3MC04ZjQxLTc2MmI0OWQ2MzUxMi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.cJeziDdHBdOuIPSE7ig3SdD1L-Mx8gyAFsBmnKxmm04";
+
+var frame = {
+current : 0,
+left : 0,
+down : 0,
+up : 0
+}
+
+var xPos = 680;
+var yPos = 510;
+
+var man = {
+
+right : false,
+left : true,
+up : false,
+down : false
+}
+
+var state = {
+current : 0,
+start : 0,
+down : 1
+}
+var man = {
+right : false,
+left : true,
+up : false,
+down : false
+}
+
+function draw(e){
+if(man.right == true){
+if(frame.current == 0){
+
+cxt.drawImage(char,0,0,66,100,xPos,yPos,40,40);
+}
+if(frame.current == 1){
+cxt.drawImage(char,105,0,66,100,xPos,yPos,40,40);
+}
+if(frame.current == 2){
+cxt.drawImage(char,199,0,66,100,xPos,yPos,40,40);
+}
+if(frame.current == 3){
+cxt.drawImage(char,299,0,66,100,xPos,yPos,40,40);
+}
+if(frame.current == 4){
+cxt.drawImage(char,400,0,66,100,xPos,yPos,40,40);
+}
+if(frame.current == 5){
+cxt.drawImage(char,498,0,66,100,xPos,yPos,40,40);
+}
+if(frame.current == 6){
+cxt.drawImage(char,598,0,66,100,xPos,yPos,40,40);
+}
+if(frame.current == 7){
+cxt.drawImage(char,700,0,66,100,xPos,yPos,40,40);
+}
+if(frame.current > 7){
+frame.current = 0;
+}
+}
+
+if(man.left == true){
+if(frame.left == 0){
+
+cxt.drawImage(char,1603,0,66,100,xPos,yPos,40,40);
+}
+if(frame.left == 1){
+cxt.drawImage(char,1706,0,66,100,xPos,yPos,40,40);
+}
+if(frame.left == 2){
+cxt.drawImage(char,1806,0,66,100,xPos,yPos,40,40);
+}
+if(frame.left == 3){
+cxt.drawImage(char,1906,0,66,100,xPos,yPos,40,40);
+}
+if(frame.left == 4){
+cxt.drawImage(char,2006,0,66,100,xPos,yPos,40,40);
+}
+if(frame.left == 5){
+cxt.drawImage(char,2106,0,66,100,xPos,yPos,40,40);
+}
+if(frame.left == 6){
+cxt.drawImage(char,2206,0,66,100,xPos,yPos,40,40);
+}
+if(frame.left == 7){
+cxt.drawImage(char,2306,0,66,100,xPos,yPos,40,40);
+}
+if(frame.left > 7){
+frame.left = 0;
+}
+
+}
+if(man.down == true){
+if(frame.down == 0){
+
+cxt.drawImage(char,800,0,66,100,xPos,yPos,40,40);
+}
+if(frame.down == 1){
+cxt.drawImage(char,900,0,66,100,xPos,yPos,40,40);
+}
+if(frame.down == 2){
+cxt.drawImage(char,1000,0,66,100,xPos,yPos,40,40);
+}
+if(frame.down == 3){
+cxt.drawImage(char,1100,0,66,100,xPos,yPos,40,40);
+}
+if(frame.down == 4){
+cxt.drawImage(char,1200,0,66,100,xPos,yPos,40,40);
+}
+if(frame.down == 5){
+cxt.drawImage(char,1300,0,66,100,xPos,yPos,40,40);
+}
+if(frame.down == 6){
+cxt.drawImage(char,1400,0,66,100,xPos,yPos,40,40);
+}
+if(frame.down == 7){
+cxt.drawImage(char,1500,0,66,100,xPos,yPos,40,40);
+}
+if(frame.down > 7){
+frame.down = 0;
+}
+
+}
+if(man.up == true){
+if(frame.up == 0){
+
+cxt.drawImage(char,2400,0,66,100,xPos,yPos,40,40);
+}
+if(frame.up == 1){
+cxt.drawImage(char,2500,0,66,100,xPos,yPos,40,40);
+}
+if(frame.up == 2){
+cxt.drawImage(char,2600,0,66,100,xPos,yPos,40,40);
+}
+if(frame.up == 3){
+cxt.drawImage(char,2700,0,66,100,xPos,yPos,40,40);
+}
+if(frame.up == 4){
+cxt.drawImage(char,2800,0,66,100,xPos,yPos,40,40);
+}
+if(frame.up == 5){
+cxt.drawImage(char,2900,0,66,100,xPos,yPos,40,40);
+}
+if(frame.up == 6){
+cxt.drawImage(char,3000,0,66,100,xPos,yPos,40,40);
+}
+if(frame.up == 7){
+cxt.drawImage(char,3100,0,66,100,xPos,yPos,40,40);
+}
+if(frame.up > 7){
+frame.up = 0;
+}
+}
+}
+
+
+
+var speed = false;
+
+var collide1 = false;
+var collide2 = false;
+var collide3 = false;
+var collide4 = false;
+var collide5 = false;
+var collider = false
+
+var run = false;
+
+document.addEventListener('keydown', function (evt) {
+if(state.current == state.start){
+if (evt.keyCode === 39) {
+  if(xPos < 800){
+  
+  if(collider == false && collide6 == false){
+    man.right = true;
+    man.left = false;
+    man.down = false;
+    man.up = false;
+  cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.current += 1;
+  if(speed == false){
+  xPos += 7;
+  }
+  else{
+  if(speed == true){
+  xPos += 10
+  }
+  }
+  }
+  
+  }
+  
+  }
+  if(evt.keyCode === 37){
+  if(xPos > 0 && collide2 == false && collide3 == false){
+  man.down = false;
+   man.left = true;
+  man.right = false;
+  man.up = false;
+   cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.left += 1;
+  if(speed == false){
+  xPos -= 7;
+  }
+  else{
+  if(speed == true){
+  xPos -= 10;
+  }
+  }
+  }
+  }
+  if(evt.keyCode === 40){
+  if(yPos < 660 && collide5 == false){
+  man.left = false;
+  man.right = false;
+  man.down = true;
+  man.up = false;
+  cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.down += 1;
+  if(speed == false){
+   yPos += 7;
+  }
+ else{
+ if(speed == true){
+ yPos += 10;
+ }
+ }
+  }
+  }
+  if(evt.keyCode === 38){
+  if(yPos > 0 && collide1 == false && collide3 == false && collide4 == false && collide7 == false){
+  man.left = false;
+  man.right = false;
+  man.down = false;
+  man.up = true;
+  cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.up += 1;
+  if(speed == false){
+  yPos -= 7;
+  }
+  else{
+  if(speed = true){
+  yPos -= 10;
+  }
+  }
+  }
+  }
+  
+}
+// downstairs
+
+if(state.current == state.down){
+if (evt.keyCode === 39) {
+  if(xPos < 800){
+ 
+  
+    man.right = true;
+    man.left = false;
+    man.down = false;
+    man.up = false;
+  cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.current += 1;
+  if(speed == false){
+  xPos += 7;
+  }
+  else{
+  if(speed == true){
+  xPos += 10
+  }
+  }
+  
+  
+  }
+  
+  }
+  if(evt.keyCode === 37){
+  if(xPos > 0){
+  man.down = false;
+   man.left = true;
+  man.right = false;
+  man.up = false;
+   cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.left += 1;
+  if(speed == false){
+  xPos -= 7;
+  }
+  else{
+  if(speed == true){
+  xPos -= 10;
+  }
+  }
+  }
+  }
+  if(evt.keyCode === 40){
+  if(yPos < 660){
+  man.left = false;
+  man.right = false;
+  man.down = true;
+  man.up = false;
+  cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.down += 1;
+  if(speed == false){
+   yPos += 7;
+  }
+ else{
+ if(speed == true){
+ yPos += 10;
+ }
+ }
+  }
+  }
+  if(evt.keyCode === 38){
+  if(yPos > 0 ){
+  man.left = false;
+  man.right = false;
+  man.down = false;
+  man.up = true;
+  cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.up += 1;
+ if(speed == false){
+  yPos -= 7;
+  }
+  else{
+  if(speed = true){
+  yPos -= 10;
+  }
+  }
+  }
+  }
+}
+
+ if(evt.keyCode === 16){
+ speed = true;
+ } 
+  
+});
+
+
+
+
+var npc1 = new Image();
+npc1.src = "https://rpgtileset.com/wp-content/uploads/2019/05/da0sbkl-f1754a7e-0199-4de1-9ac4-748b1b6a7cab.png";
+
+var hmt = new Image();
+hmt.src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e0dc5571-0acd-4eb8-a07a-7a11b29a8c6e/d9xkdmr-a8759b97-f536-47ad-b4ba-4df41be3bbe3.png/v1/fill/w_600,h_450,strp/__pokemon_autoinsidea_by_skatefilter5_d9xkdmr-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDUwIiwicGF0aCI6IlwvZlwvZTBkYzU1NzEtMGFjZC00ZWI4LWEwN2EtN2ExMWIyOWE4YzZlXC9kOXhrZG1yLWE4NzU5Yjk3LWY1MzYtNDdhZC1iNGJhLTRkZjQxYmUzYmJlMy5wbmciLCJ3aWR0aCI6Ijw9NjAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.ewqevpGFFH2DeBNGhTCuUP9rKjd1BqTDqAdEKlopNmM";
+
+var stairs = new Image();
+stairs.src = "https://rpgtileset.com/wp-content/uploads/2019/05/da5yniv-54ec86f4-019e-434f-8886-cf267a9e9eef.png";
+
+var homeac = new Image();
+homeac.src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e0dc5571-0acd-4eb8-a07a-7a11b29a8c6e/daeqz28-55f6b790-f57e-4dc0-9cac-96666290fc23.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2UwZGM1NTcxLTBhY2QtNGViOC1hMDdhLTdhMTFiMjlhOGM2ZVwvZGFlcXoyOC01NWY2Yjc5MC1mNTdlLTRkYzAtOWNhYy05NjY2NjI5MGZjMjMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.1Hu9WBv6bUAWWbublpeq2w6XNZBLSkHkc1EWk7a9xYI";
+
+function drawbg(){
+if(state.current == state.start){
+cxt.drawImage(bg1,-100,0,1100,799);
+}
+if(state.current == state.down){
+cxt.drawImage(hmt,0,0,41,74,0,0,100,100);
+cxt.drawImage(hmt,0,0,41,74,100,0,100,100);
+cxt.drawImage(hmt,0,0,41,74,200,0,100,100);
+cxt.drawImage(hmt,0,0,41,74,300,0,100,100);
+cxt.drawImage(hmt,0,0,41,74,400,0,100,100);
+cxt.drawImage(hmt,0,0,41,74,500,0,100,100);
+cxt.drawImage(hmt,0,0,41,74,600,0,100,100);
+cxt.drawImage(hmt,0,0,41,74,700,0,100,100);
+cxt.drawImage(hmt,0,0,41,74,800,0,100,100);
+cxt.drawImage(hmt,0,0,41,74,0,100,100,100);
+cxt.drawImage(hmt,0,0,41,74,100,100,100,100);
+cxt.drawImage(hmt,0,0,41,74,200,100,100,100);
+cxt.drawImage(hmt,0,0,41,74,300,100,100,100);
+cxt.drawImage(hmt,0,0,41,74,400,100,100,100);
+cxt.drawImage(hmt,0,0,41,74,500,100,100,100);
+cxt.drawImage(hmt,0,0,41,74,600,100,100,100);
+cxt.drawImage(hmt,0,0,41,74,700,100,100,100);
+cxt.drawImage(hmt,0,0,41,74,800,100,100,100);
+// row3
+cxt.drawImage(hmt,0,0,41,74,0,200,100,100);
+cxt.drawImage(hmt,0,0,41,74,100,200,100,100);
+cxt.drawImage(hmt,0,0,41,74,200,200,100,100);
+cxt.drawImage(hmt,0,0,41,74,300,200,100,100);
+cxt.drawImage(hmt,0,0,41,74,400,200,100,100);
+cxt.drawImage(hmt,0,0,41,74,500,200,100,100);
+cxt.drawImage(hmt,0,0,41,74,600,200,100,100);
+cxt.drawImage(hmt,0,0,41,74,700,200,100,100);
+cxt.drawImage(hmt,0,0,41,74,800,200,100,100);
+// row4
+cxt.drawImage(hmt,0,0,41,74,0,300,100,100);
+cxt.drawImage(hmt,0,0,41,74,100,300,100,100);
+cxt.drawImage(hmt,0,0,41,74,200,300,100,100);
+cxt.drawImage(hmt,0,0,41,74,300,300,100,100);
+cxt.drawImage(hmt,0,0,41,74,400,300,100,100);
+cxt.drawImage(hmt,0,0,41,74,500,300,100,100);
+cxt.drawImage(hmt,0,0,41,74,600,300,100,100);
+cxt.drawImage(hmt,0,0,41,74,700,300,100,100);
+cxt.drawImage(hmt,0,0,41,74,800,300,100,100);
+// row5
+cxt.drawImage(hmt,0,0,41,74,0,400,100,100);
+cxt.drawImage(hmt,0,0,41,74,100,400,100,100);
+cxt.drawImage(hmt,0,0,41,74,200,400,100,100);
+cxt.drawImage(hmt,0,0,41,74,300,400,100,100);
+cxt.drawImage(hmt,0,0,41,74,400,400,100,100);
+cxt.drawImage(hmt,0,0,41,74,500,400,100,100);
+cxt.drawImage(hmt,0,0,41,74,600,400,100,100);
+cxt.drawImage(hmt,0,0,41,74,700,400,100,100);
+cxt.drawImage(hmt,0,0,41,74,800,400,100,100);
+// row6
+cxt.drawImage(hmt,0,0,41,74,0,500,100,100);
+cxt.drawImage(hmt,0,0,41,74,100,500,100,100);
+cxt.drawImage(hmt,0,0,41,74,200,500,100,100);
+cxt.drawImage(hmt,0,0,41,74,300,500,100,100);
+cxt.drawImage(hmt,0,0,41,74,400,500,100,100);
+cxt.drawImage(hmt,0,0,41,74,500,500,100,100);
+cxt.drawImage(hmt,0,0,41,74,600,500,100,100);
+cxt.drawImage(hmt,0,0,41,74,700,500,100,100);
+cxt.drawImage(hmt,0,0,41,74,800,500,100,100);
+// row7
+cxt.drawImage(hmt,0,0,41,74,0,600,100,100);
+cxt.drawImage(hmt,0,0,41,74,100,600,100,100);
+cxt.drawImage(hmt,0,0,41,74,200,600,100,100);
+cxt.drawImage(hmt,0,0,41,74,300,600,100,100);
+cxt.drawImage(hmt,0,0,41,74,400,600,100,100);
+cxt.drawImage(hmt,0,0,41,74,500,600,100,100);
+cxt.drawImage(hmt,0,0,41,74,600,600,100,100);
+cxt.drawImage(hmt,0,0,41,74,700,600,100,100);
+cxt.drawImage(hmt,0,0,41,74,800,600,100,100);
+// stairs
+cxt.drawImage(stairs, 298,33,86,150, 750,170,86,150);
+// couch
+cxt.drawImage(homeac,482, 174, 141, 50, 300, 174, 220, 97);
+cxt.drawImage(homeac, 483, 340, 89,39, 310, 340, 200,100);
+// rug
+cxt.drawImage(stairs, 80, 206, 74, 44, 300,650,100,50);
+//sink
+cxt.drawImage(homeac, 48, 242, 93, 100, 0,0,150,200);
+//fridge
+cxt.drawImage(homeac, 387, 472, 42, 86, 180, 0, 100, 150);
+// bookshelf
+cxt.drawImage(homeac, 388, 34, 87, 86, 600, -50, 200, 200);
+//flowerpot
+cxt.drawImage(homeac, 194, 674, 44, 94, 0, 600, 90, 150);
+// flower
+cxt.drawImage(homeac, 478, 686, 48, 80, 700, 600, 80,85);
+// table
+cxt.drawImage(homeac, 676, 298, 39, 41, 374,290, 50,50);
+//mom
+cxt.drawImage(npc1, 737, 442 - 10, 40, 44, 57, 307,40,40);
+}
+}
+
+
+document.addEventListener('keyup', function (evt) {
+  if (evt.keyCode === 39) {
+  if(man.right === true){
+  cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.current = 0;
+  }
+  
+  }
+  if(evt.keyCode == 37){
+  if(man.left == true){
+  cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.left = 0;
+  }
+  
+  }
+  if(evt.keyCode == 40){
+  if(man.down == true){
+  cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.down = 0;
+  }
+  }
+  if(evt.keyCode == 38){
+  if(man.up == true){
+  cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.up = 0;
+  }
+  }
+  if(evt.keyCode == 16){
+  speed = false;
+  }
+})
+
+function blackbg(){
+cxt.fillRect(0,0,900,710);
+}
+
+function collision(){
+// the 1st collision
+if(yPos <= 220 && xPos < 650 && xPos >= 0 ||xPos < 110 && xPos >= 10 && yPos <= 280){
+collide1 = true;
+}
+else{
+collide1 = false;
+}
+if(xPos == 113 &&  yPos <= 280){
+collide2 = true;
+}
+else{
+collide2 = false;
+}
+if(yPos <= 180){
+collide3 = true;
+
+}
+else{
+collide3 = false;
+}
+
+if(xPos == 8 && yPos <= 280){
+collider = true;
+}
+else{
+collider = false;
+}
+
+if(xPos >= 710 && xPos <= 800 && yPos == 335){
+collide4 = true;
+}
+else{
+collide4 = false;
+}
+if(xPos >= 708 && yPos <= 800 && yPos == 410 || xPos >= 708 && yPos <= 800 && yPos == 412 ){
+collide5 = true;
+}
+else{
+collide5 = false;
+}
+if(xPos >= 680 && yPos >= 430 && yPos <= 630){
+collide6 = true;
+}
+else{
+collide6 = false;
+}
+if(xPos >= 740 && xPos <= 800 && yPos == 622){
+collide7 = true;
+}
+else{
+collide7 = false;
+}
+if(yPos >= 190 && yPos <= 240 && xPos >= 710){
+state.current = state.down;
+
+}
+}
+
+var SAVE_KEY = 'save';
+
+function save(state) {
+  localStorage.setItem(SAVE_KEY, JSON.stringify(state));
+}
+
+function load() {
+  return JSON.parse(localStorage.getItem(SAVE_KEY));
+}
+
+
+function loop() {
+load();
+collision();
+requestAnimationFrame(loop);
+blackbg();
+drawbg();
+draw();
+console.log(yPos + " string " + xPos + ' string ' + speed);
+
+
+ }
+ 
+ loop();
+
+
+</script>
+</body>
+</html>
