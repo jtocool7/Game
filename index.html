@@ -604,9 +604,11 @@ function load() {
   return JSON.parse(localStorage.getItem(SAVE_KEY));
 }
 
-
+var state = load();
+state.current = state.current;
+save(state);
 function loop() {
-load();
+
 collision();
 requestAnimationFrame(loop);
 blackbg();
