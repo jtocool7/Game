@@ -604,8 +604,7 @@ function load() {
   return JSON.parse(localStorage.getItem(SAVE_KEY));
 }
 
-var state = load();
-state.current = state.current;
+var state2 = load();
 save(state);
 function loop() {
 
