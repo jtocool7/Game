@@ -15,8 +15,8 @@
   #cvs2{
     border-radius:25px;
    position:absolute;
-   right:6px;
-   bottom:-150px;
+   right:-550px;
+   bottom:10px;
   }
   #codeMyster{
     position:absolute;
@@ -28,9 +28,9 @@
 <body>
 <center>
  <canvas id=cvs width= 835px height= 701px> </canvas>
- <canvas id = cvs2 width= 800 height = 100> </canvas> 
+  
  </center>
-
+ <canvas id = cvs2 width= 500 height = 600> </canvas>
 
 
 <p id=codeMyster>
@@ -594,18 +594,7 @@ state.current = state.down;
 }
 }
 
-var SAVE_KEY = 'save';
 
-function save(state) {
-  localStorage.setItem(SAVE_KEY, JSON.stringify(state));
-}
-
-function load() {
-  return JSON.parse(localStorage.getItem(SAVE_KEY));
-}
-
-var state2 = load();
-save(state);
 function loop() {
 
 collision();
