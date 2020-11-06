@@ -15,7 +15,7 @@
   #cvs2{
     border-radius:25px;
    position:absolute;
-   right:100px;
+   right:-510px;
    bottom:10px;
   }
   #codeMyster{
@@ -26,10 +26,10 @@
   </style>
 </head>
 <body>
-
+<center>
  <canvas id=cvs width= 835px height= 701px> </canvas>
   
-
+ </center>
  <canvas id = cvs2 width= 500 height = 700> </canvas>
 
 
@@ -642,14 +642,17 @@ collide11 = true;
 else{
 collide11 = false;
 }
+if(xPos == 50 && yPos == 342){
+ttm = true
 }
-var ttm = true;
+}
+var ttm = false;
 var tlkc1 = false;
 function drawc2(){
 cxt2.fillStyle = " #808080";
 cxt2.fillRect(0,0,cvs2.width, cvs2.height);
 cxt2.fillStyle = "#000000";
-if(ttm == true && xPos == 57 && yPos == 335){
+if(ttm == true){
 cxt2.font = "16px calibri";
 cxt2.fillStyle = "#000000";
 cxt2.font = "16px calibri";
@@ -681,7 +684,7 @@ requestAnimationFrame(loop);
 blackbg();
 drawbg();
 draw();
-console.log(yPos + " string " + xPos + ' string ' + speed);
+console.log(yPos + " string " + xPos + ' string ' + ttm);
 
 
  }
