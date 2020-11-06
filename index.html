@@ -14,9 +14,8 @@
   }
   #cvs2{
     border-radius:25px;
-   right:100px;
    position:absolute;
-
+   right:100px;
    bottom:10px;
   }
   #codeMyster{
@@ -31,7 +30,7 @@
  <canvas id=cvs width= 835px height= 701px> </canvas>
   
 
- <canvas id = cvs2 width= 500 height = 600> </canvas>
+ <canvas id = cvs2 width= 500 height = 700> </canvas>
 
 
 <p id=codeMyster>
@@ -40,7 +39,8 @@ code<b>M</b>yster
 <script>
 const cvs = document.getElementById('cvs');
 const cxt = cvs.getContext('2d');
-
+const cvs2 = document.getElementById('cvs2');
+const cxt2 = cvs2.getContext('2d');
 
 
 const char = new Image();
@@ -68,7 +68,7 @@ down : false
 }
 
 var state = {
-current : 0,
+current : 1,
 start : 0,
 down : 1
 }
@@ -77,6 +77,12 @@ right : false,
 left : true,
 up : false,
 down : false
+}
+
+var bag = {
+candy : 0,
+bages : 0,
+fruit : 0
 }
 
 function draw(e){
@@ -214,7 +220,13 @@ var collide2 = false;
 var collide3 = false;
 var collide4 = false;
 var collide5 = false;
-var collider = false
+var collider = false;
+var collide6 = false;
+var collide7 = false;
+var collide8 = false;
+var collide9 = false;
+var collide10 = false
+var collide11 = false
 
 var run = false;
 
@@ -302,7 +314,7 @@ if (evt.keyCode === 39) {
 // downstairs
 
 if(state.current == state.down){
-if (evt.keyCode === 39) {
+if (evt.keyCode === 39 && collide10 == false) {
   if(xPos < 800){
  
   
@@ -326,7 +338,7 @@ if (evt.keyCode === 39) {
   
   }
   if(evt.keyCode === 37){
-  if(xPos > 0){
+  if(xPos > 0 && collide6 == false && collide9 == false){
   man.down = false;
    man.left = true;
   man.right = false;
@@ -344,7 +356,7 @@ if (evt.keyCode === 39) {
   }
   }
   if(evt.keyCode === 40){
-  if(yPos < 660){
+  if(yPos < 660 && collide7 == false){
   man.left = false;
   man.right = false;
   man.down = true;
@@ -362,7 +374,7 @@ if (evt.keyCode === 39) {
   }
   }
   if(evt.keyCode === 38){
-  if(yPos > 0 ){
+  if(yPos > 0 && collide8 == false && collide11 == false){
   man.left = false;
   man.right = false;
   man.down = false;
@@ -593,11 +605,77 @@ if(yPos >= 190 && yPos <= 240 && xPos >= 710){
 state.current = state.down;
 
 }
+if(yPos >= 573 - 5 && yPos <= 664 && 	xPos == 92){
+collide6 = true;
 }
+else{
+collide6 = false;
+}
+if(xPos >= -6 && xPos <= 85 && yPos == 559){
+collide7 = true;
+}
+else{
+collide7 = false;
+}
+if(xPos >= -6 && xPos <= 267 && yPos == 111){
+collide8 = true;
+}
+else{
+collide8 = false
+
+}
+if(yPos >= -1 && yPos <= 104 && xPos == 274){
+collide9 = true
+}
+else{
+collide9 = false;
+}
+if(yPos >= -1 && yPos <= 125 && xPos >= 561 && xPos <= 567){
+collide10 = true;
+}
+else{
+collide10 = false;
+}
+if(xPos >= 568 && xPos <= 806 && yPos == 125){
+collide11 = true;
+}
+else{
+collide11 = false;
+}
+}
+var ttm = true;
+var tlkc1 = false;
+function drawc2(){
+cxt2.fillStyle = " #808080";
+cxt2.fillRect(0,0,cvs2.width, cvs2.height);
+cxt2.fillStyle = "#000000";
+if(ttm == true && xPos == 57 && yPos == 335){
+cxt2.font = "16px calibri";
+cxt2.fillStyle = "#000000";
+cxt2.font = "16px calibri";
+cxt2.fillText('Oh hun, how are you...', cvs2.width / 2 - 40, cvs2.height - 550)
+tlkc1 = true
+}
+
+setInterval(function(){
+if(tlkc1 == true){
+ttm = false;
+}
+
+},10000)
+
+
+ 
+
+
+}
+
 
 
 function loop() {
 
+
+drawc2();
 collision();
 requestAnimationFrame(loop);
 blackbg();
