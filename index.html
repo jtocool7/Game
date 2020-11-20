@@ -6,7 +6,7 @@
   <style>
   *{
     font-family:calibri;
-    
+    user-select:none;
   }
   canvas{
     border: 1px solid;
@@ -15,32 +15,57 @@
   #cvs2{
     border-radius:25px;
    position:absolute;
-   right:100px;
+   right: 100px;
    bottom:10px;
+
   }
   #codeMyster{
     position:absolute;
     bottom:690px;
     right:760px
   }
-    
-    cvs{
-      position:absolute;
-      right:0px;
-    }
+  #bbag{
+   border-radius:25px;
+   position:absolute;
+   right:-900px;
+   bottom:10px;
+  background:white; 
+  width:100px;
+  height:100px;
+
+  text-align:center;
+  
+  }
+  
+  #bagw{
+    position:absolute;
+    top:25px;
+    right:34px;
+    text-align:center;
+  }
+  
+  .hide{
+    display:none;
+  }
   </style>
 </head>
 <body>
 
  <canvas id=cvs width= 835px height= 701px> </canvas>
-  
 
- <canvas id = cvs2 width= 500 height = 700> </canvas>
+ 
+ <canvas id = cvs2 width= 500 height=700> </canvas>
 
-
+<audio id=starts src="https://vgmsite.com/soundtracks/pokemon-x-y/mewshycd/1-01%20Title%20Screen.mp3"></audio>
 <p id=codeMyster>
 code<b>M</b>yster
 </p>
+
+<div  id=bbag>
+<p id=bagw>
+BAG
+</p>
+</div>
 <script>
 const cvs = document.getElementById('cvs');
 const cxt = cvs.getContext('2d');
@@ -54,6 +79,8 @@ char.src = "https://raw.githubusercontent.com/StevePaget/Pygame_Functions/master
 const bg1 = new Image();
 bg1.src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/627e91b1-1006-47bf-92b0-82f225867117/d9kpu7v-2a161877-7a14-4270-8f41-762b49d63512.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNjI3ZTkxYjEtMTAwNi00N2JmLTkyYjAtODJmMjI1ODY3MTE3XC9kOWtwdTd2LTJhMTYxODc3LTdhMTQtNDI3MC04ZjQxLTc2MmI0OWQ2MzUxMi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.cJeziDdHBdOuIPSE7ig3SdD1L-Mx8gyAFsBmnKxmm04";
 
+const start = new Image();
+start.src = "https://cdn.discordapp.com/attachments/743458313089581079/779410068256325672/xystart.jpg";
 var frame = {
 current : 0,
 left : 0,
@@ -61,7 +88,7 @@ down : 0,
 up : 0
 }
 
-var xPos = 680;
+var xPos = 673;
 var yPos = 510;
 
 var man = {
@@ -73,7 +100,8 @@ down : false
 }
 
 var state = {
-current : 0,
+current : 0.1,
+startscreen : 0.1,
 start : 0,
 down : 1
 }
@@ -99,6 +127,7 @@ const net = {
   }
 
 function draw(e){
+if(state.current != state.startscreen){
 if(man.right == true){
 if(frame.current == 0){
 
@@ -220,6 +249,7 @@ cxt.drawImage(char,3100,0,66,100,xPos,yPos,40,40);
 }
 if(frame.up > 7){
 frame.up = 0;
+}
 }
 }
 }
@@ -408,10 +438,13 @@ if (evt.keyCode === 39 && collide10 == false && collide13 == false) {
   }
   }
 }
-
- if(evt.keyCode === 16){
- speed = true;
+// start
+ if(evt.keyCode === 32){
+ state.current = 0;
+ starts.pause();
  } 
+  
+  
   
 });
 
@@ -524,6 +557,10 @@ cxt.drawImage(homeac, 478, 686, 48, 80, 700, 600, 80,85);
 cxt.drawImage(homeac, 676, 298, 39, 41, 374,290, 50,50);
 //mom
 cxt.drawImage(npc1, 737, 442 - 10, 40, 44, 57, 307,45,40);
+}
+if(state.current == 0.1){
+cxt.drawImage(start,0,0,cvs.width + 30,cvs.height);
+starts.play();
 }
 }
 
@@ -741,9 +778,7 @@ cxt2.fillStyle = "#000000";
 cxt2.font = "16px calibri";
 cxt2.fillText('Oh hun, how are you...', cvs2.width / 2 - 40, cvs2.height - 560)
 
-cxt2.font = "16px calibri";
-cxt2.fillStyle = "#000000";
-cxt2.font = "16px calibri";
+
 cxt2.fillText('Your going on a Journey?...', cvs2.width / 2 - 40, cvs2.height - 540)
 
 cxt2.fillText('here take some candy ok?', cvs2.width / 2 - 40, cvs2.height - 520)
@@ -752,22 +787,37 @@ cxt2.fillText('you got 10 candy!', cvs2.width / 2 - 40, cvs2.height - 500)
 
 
  
+if(show1 == true){
+cxt2.fillStyle = "#000000";
+cxt2.font = "16px calibri";
+cxt2.fillText("You Have " + bag.candy + " candy", cvs2.width / 2 - 90, cvs2.height - 520)
+}
 
+}
+var show1 = true;
+// bag
+bbag.addEventListener("click", function(){
+show1 = true;
+bbag.classList.add('hide');
+
+})
+
+function position(){
+bbag.style.bottom = cvs2.height/2 - 120 + "px";
+bbag.style.right = cvs2.width - 1010 + "px";
 
 }
 
-
-
 function loop() {
 
-
+position();
 drawc2();
 collision();
 requestAnimationFrame(loop);
 blackbg();
 drawbg();
 draw();
-console.log(yPos + " string " + xPos + " string " + collide1r);
+console.log(yPos + " string " + xPos + " string " + show1);
 
 
  }
