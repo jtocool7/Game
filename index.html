@@ -68,7 +68,7 @@ down : false
 }
 
 var state = {
-current : 1,
+current : 0,
 start : 0,
 down : 1
 }
@@ -82,8 +82,16 @@ down : false
 var bag = {
 candy : 0,
 bages : 0,
-fruit : 0
+fruit : 0,
 }
+
+const net = {
+  x : cvs2.width/2 -1,
+  y : 0,
+  width : 2,
+  height : 10,
+  color : "white"
+  }
 
 function draw(e){
 if(man.right == true){
@@ -226,8 +234,11 @@ var collide7 = false;
 var collide8 = false;
 var collide9 = false;
 var collide10 = false
-var collide11 = false
-
+var collide11 = false;
+var collide12 = false;
+var collide13 = false;
+var collide1r = false;
+var collide2r = false;
 var run = false;
 
 document.addEventListener('keydown', function (evt) {
@@ -235,7 +246,7 @@ if(state.current == state.start){
 if (evt.keyCode === 39) {
   if(xPos < 800){
   
-  if(collider == false && collide6 == false){
+  if(collider == false && collide6 == false && collide1r == false){
     man.right = true;
     man.left = false;
     man.down = false;
@@ -292,7 +303,7 @@ if (evt.keyCode === 39) {
   }
   }
   if(evt.keyCode === 38){
-  if(yPos > 0 && collide1 == false && collide3 == false && collide4 == false && collide7 == false){
+  if(yPos > 0 && collide1 == false && collide3 == false && collide4 == false && collide7 == false && collide2r == false){
   man.left = false;
   man.right = false;
   man.down = false;
@@ -314,7 +325,7 @@ if (evt.keyCode === 39) {
 // downstairs
 
 if(state.current == state.down){
-if (evt.keyCode === 39 && collide10 == false) {
+if (evt.keyCode === 39 && collide10 == false && collide13 == false) {
   if(xPos < 800){
  
   
@@ -338,7 +349,7 @@ if (evt.keyCode === 39 && collide10 == false) {
   
   }
   if(evt.keyCode === 37){
-  if(xPos > 0 && collide6 == false && collide9 == false){
+  if(xPos > 0 && collide6 == false && collide9 == false && collide15 == false){
   man.down = false;
    man.left = true;
   man.right = false;
@@ -356,7 +367,7 @@ if (evt.keyCode === 39 && collide10 == false) {
   }
   }
   if(evt.keyCode === 40){
-  if(yPos < 660 && collide7 == false){
+  if(yPos < 660 && collide7 == false && collide14 == false){
   man.left = false;
   man.right = false;
   man.down = true;
@@ -374,7 +385,7 @@ if (evt.keyCode === 39 && collide10 == false) {
   }
   }
   if(evt.keyCode === 38){
-  if(yPos > 0 && collide8 == false && collide11 == false){
+  if(yPos > 0 && collide8 == false && collide11 == false && collide12 == false){
   man.left = false;
   man.right = false;
   man.down = false;
@@ -507,7 +518,7 @@ cxt.drawImage(homeac, 478, 686, 48, 80, 700, 600, 80,85);
 // table
 cxt.drawImage(homeac, 676, 298, 39, 41, 374,290, 50,50);
 //mom
-cxt.drawImage(npc1, 737, 442 - 10, 40, 44, 57, 307,40,40);
+cxt.drawImage(npc1, 737, 442 - 10, 40, 44, 57, 307,45,40);
 }
 }
 
@@ -642,30 +653,97 @@ collide11 = true;
 else{
 collide11 = false;
 }
-if(xPos == 50 && yPos == 342){
-ttm = true
+if(xPos >= 29 && xPos <= 85 && yPos == 342){
+ttm = true;
+collide12 = true
+if(gift1 == true){
+bag.candy = bag.candy + 10;
+gift1 = false;
+}
+
+}
+else{
+collide12 = false
+}
+if(xPos == 666 && yPos <= 664 && yPos >=559){
+collide13 = true;
+}
+else{
+collide13 = false;
+}
+if(xPos >= 673 && xPos <= 771 && yPos == 559){
+collide14 = true;
+}
+else{
+collide14 = false;
+}
+if(xPos == 778 && yPos <= 664 && yPos >= 559){
+collide15 = true;
+}
+else{
+collide15 = false;
+}
+if(xPos == 736 && yPos <= 223 && yPos >= 202){
+state.current = 0;
+xPos = 680;
+yPos = 510;
+man.right = false;
+man.left = true;
+man.up = false;
+man.down = false;
+}
+if(xPos == 673 && yPos <= 694 && yPos >= 419){
+collide1r = true;
+}
+else{
+collide1r = false;
+}
+if(yPos == 643 && xPos >= 680 && xPos <=806){
+collide2r = true;
+}
+else{
+collide2r = false
 }
 }
+var collide15 = false;
+var collide14 = false;
+
 var ttm = false;
-var tlkc1 = false;
+gift1 = true;
+function drawNet(){
+for(let i = 0; i <= cvs2.width; i+=15){
+  cxt2.fillRect(cvs2.width , cvs2.height / 2, 2, 10);
+  }
+}
+
+drawNet();
 function drawc2(){
+
 cxt2.fillStyle = " #808080";
 cxt2.fillRect(0,0,cvs2.width, cvs2.height);
 cxt2.fillStyle = "#000000";
+
+
+for(let i = 0; i <= cvs2.width; i+=15){
+cxt2.fillStyle = "white";
+  cxt2.fillRect(0 + i,cvs2.height / 2,10, 2);
+  }
+
+  
 if(ttm == true){
 cxt2.font = "16px calibri";
 cxt2.fillStyle = "#000000";
 cxt2.font = "16px calibri";
-cxt2.fillText('Oh hun, how are you...', cvs2.width / 2 - 40, cvs2.height - 550)
-tlkc1 = true
-}
+cxt2.fillText('Oh hun, how are you...', cvs2.width / 2 - 40, cvs2.height - 560)
 
-setInterval(function(){
-if(tlkc1 == true){
-ttm = false;
-}
+cxt2.font = "16px calibri";
+cxt2.fillStyle = "#000000";
+cxt2.font = "16px calibri";
+cxt2.fillText('Your going on a Journey?...', cvs2.width / 2 - 40, cvs2.height - 540)
 
-},10000)
+cxt2.fillText('here take some candy ok?', cvs2.width / 2 - 40, cvs2.height - 520)
+cxt2.fillText('you got 10 candy!', cvs2.width / 2 - 40, cvs2.height - 500)
+}
 
 
  
@@ -684,7 +762,7 @@ requestAnimationFrame(loop);
 blackbg();
 drawbg();
 draw();
-console.log(yPos + " string " + xPos + ' string ' + ttm);
+console.log(yPos + " string " + xPos + " string " + collide1r);
 
 
  }
