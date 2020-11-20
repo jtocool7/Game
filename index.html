@@ -11,11 +11,12 @@
   canvas{
     border: 1px solid;
     margin: 5px;
+    
   }
   #cvs2{
     border-radius:25px;
    position:absolute;
-   right: 100px;
+   right:100px;
    bottom:10px;
 
   }
@@ -47,6 +48,10 @@
   .hide{
     display:none;
   }
+    cvs{
+      position:absolute;
+      right:0px;
+    }
   </style>
 </head>
 <body>
@@ -100,7 +105,7 @@ down : false
 }
 
 var state = {
-current : 0.1,
+current : 0,
 startscreen : 0.1,
 start : 0,
 down : 1
@@ -794,7 +799,7 @@ cxt2.fillText("You Have " + bag.candy + " candy", cvs2.width / 2 - 90, cvs2.heig
 }
 
 }
-var show1 = true;
+var show1 = false;;
 // bag
 bbag.addEventListener("click", function(){
 show1 = true;
