@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2d platformer Game</title>
   <style>
   *{
@@ -11,12 +11,11 @@
   canvas{
     border: 1px solid;
     margin: 5px;
-    
   }
   #cvs2{
     border-radius:25px;
    position:absolute;
-   right:100px;
+   right:-900px;
    bottom:10px;
 
   }
@@ -48,17 +47,13 @@
   .hide{
     display:none;
   }
-    cvs{
-      position:absolute;
-      right:0px;
-    }
   </style>
 </head>
 <body>
-
+<center>
  <canvas id=cvs width= 835px height= 701px> </canvas>
 
- 
+ </center>
  <canvas id = cvs2 width= 500 height=700> </canvas>
 
 <audio id=starts src="https://vgmsite.com/soundtracks/pokemon-x-y/mewshycd/1-01%20Title%20Screen.mp3"></audio>
@@ -105,7 +100,7 @@ down : false
 }
 
 var state = {
-current : 0.1,
+current : 1,
 startscreen : 0.1,
 start : 0,
 down : 1
@@ -365,7 +360,7 @@ if (evt.keyCode === 39) {
 // downstairs
 
 if(state.current == state.down){
-if (evt.keyCode === 39 && collide10 == false && collide13 == false) {
+if (evt.keyCode === 39 && collide10 == false && collide13 == false && collide17 == false && collide20 == false && collide23 == false && collide24 == false) {
   if(xPos < 800){
  
   
@@ -389,7 +384,7 @@ if (evt.keyCode === 39 && collide10 == false && collide13 == false) {
   
   }
   if(evt.keyCode === 37){
-  if(xPos > 0 && collide6 == false && collide9 == false && collide15 == false){
+  if(xPos > 0 && collide6 == false && collide9 == false && collide15 == false && collide16 == false && collide17 == false && collide26 == false && collide27 == false){
   man.down = false;
    man.left = true;
   man.right = false;
@@ -407,7 +402,7 @@ if (evt.keyCode === 39 && collide10 == false && collide13 == false) {
   }
   }
   if(evt.keyCode === 40){
-  if(yPos < 660 && collide7 == false && collide14 == false){
+  if(yPos < 660 && collide7 == false && collide14 == false && collide21 == false && collide25 == false && collide28 == false){
   man.left = false;
   man.right = false;
   man.down = true;
@@ -425,7 +420,7 @@ if (evt.keyCode === 39 && collide10 == false && collide13 == false) {
   }
   }
   if(evt.keyCode === 38){
-  if(yPos > 0 && collide8 == false && collide11 == false && collide12 == false){
+  if(yPos > 0 && collide8 == false && collide11 == false && collide12 == false && collide18 == false && collide19 == false && collide22 == false){
   man.left = false;
   man.right = false;
   man.down = false;
@@ -730,7 +725,7 @@ collide15 = true;
 else{
 collide15 = false;
 }
-if(xPos == 736 && yPos <= 223 && yPos >= 202){
+if(xPos == 736 && yPos <= 237 && yPos >= 209){
 state.current = 0;
 xPos = 680;
 yPos = 510;
@@ -751,11 +746,103 @@ collide2r = true;
 else{
 collide2r = false
 }
+if(xPos == 92 && yPos >= 256 && yPos <= 328){
+collide16 = true;
 }
+else{
+collide16 = false;
+}
+if(xPos >= 379 && xPos <= 400 && yPos <= 412 && yPos >= 321){
+collide17 = true;
+}
+else{
+collide17 = false;
+}
+if(xPos >= 379 && xPos <= 400 && yPos == 321){
+collide18 = true;
+}
+else{
+collide18 = false;
+}
+if(xPos >= 274 && xPos <= 379 && yPos == 426){
+collide19 = true;
+}
+else{
+collide19 = false;
+}
+if(xPos == 267 && yPos <= 419 && yPos >= 307){
+collide20 = true;
+}
+else{
+collide20 = false;
+}
+if(xPos >= 267 && xPos <= 330 && yPos == 300){
+collide21 = true;
+}
+else{
+collide21 = false;
+}
+if(xPos >= 268 && xPos <= 330 && yPos == 265){
+collide22 = true;
+}
+else{
+collide22 = false;
+}
+if(xPos == 330 && yPos <= 300 && yPos >= 265){
+collide23 = true;
+}
+else{
+collide23 = false;
+}
+if(yPos <= 258 && yPos >= 139 && xPos == 260){
+collide24 = true;
+}
+else{
+collide24 = false;
+}
+if(xPos >= 267 && xPos <= 512 && yPos == 132){
+collide25 = true;
+}
+else{
+collide25 = false;
+}
+if(xPos == 519 && yPos >= 139 && yPos <= 258){
+collide26 = true;
+}
+else{
+collide26 = false;
+}
+if(xPos == 428 && yPos >= 265 && yPos <= 300){
+collide27 = true;
+}
+else{
+collide27 = false;
+}
+if(yPos == 300 && xPos >= 428 && xPos <= 505){
+collide28 = true;
+}
+else{
+collide28 = false;
+}
+}
+var collide17 = false;
+var collide18 = false;
+var collide21 = false;
+var collide22 = false;
+var collide24 = false;
+var collide23 = false;
+var collide25 = false;
+var collide28 = false;
+var collide27 = false;
+var collide26 = false;
 var collide15 = false;
+var collide19 = false;
+var collide20 = false;
 var collide14 = false;
-
+var collide16 = false;
+var textMove = true;
 var ttm = false;
+var ttm2 = false;
 gift1 = true;
 function drawNet(){
 for(let i = 0; i <= cvs2.width; i+=15){
@@ -764,6 +851,9 @@ for(let i = 0; i <= cvs2.width; i+=15){
 }
 
 drawNet();
+
+
+
 function drawc2(){
 
 cxt2.fillStyle = " #808080";
@@ -784,10 +874,32 @@ cxt2.font = "16px calibri";
 cxt2.fillText('Oh hun, how are you...', cvs2.width / 2 - 40, cvs2.height - 560)
 
 
+
+cxt2.font = "16px calibri";
+cxt2.fillStyle = "#000000";
+cxt2.font = "16px calibri";
 cxt2.fillText('Your going on a Journey?...', cvs2.width / 2 - 40, cvs2.height - 540)
 
 cxt2.fillText('here take some candy ok?', cvs2.width / 2 - 40, cvs2.height - 520)
 cxt2.fillText('you got 10 candy!', cvs2.width / 2 - 40, cvs2.height - 500)
+
+}
+
+
+
+var seconds = 0;
+if(textMove == true){
+var timer = setInterval(function () {
+if(ttm == true){
+seconds++;
+}
+ if(seconds >= 1){
+ ttm = false;
+ ttm2 = true;
+ } 
+ 
+}, 1000);
+
 }
 
 
@@ -795,11 +907,11 @@ cxt2.fillText('you got 10 candy!', cvs2.width / 2 - 40, cvs2.height - 500)
 if(show1 == true){
 cxt2.fillStyle = "#000000";
 cxt2.font = "16px calibri";
-cxt2.fillText("You Have " + bag.candy + " candy", cvs2.width / 2 - 90, cvs2.height - 520)
+cxt2.fillText("You Have " + bag.candy + " candy", cvs2.width / 2 - 90, cvs2.height - 300)
 }
 
 }
-var show1 = false;;
+var show1 = false;
 // bag
 bbag.addEventListener("click", function(){
 show1 = true;
@@ -813,8 +925,20 @@ bbag.style.right = cvs2.width - 1010 + "px";
 
 }
 
-function loop() {
+function resize(){
+WIDTH = window.innerWidth
+HEIGHT = window.innerHeight
+cvs.width = WIDTH
+cvs.height = HEIGHT
+}
 
+window.addEventListener('resize', function(){
+resize();
+})
+
+function loop() {
+resize();
+cxt.mozImageSmoothingEnabled = false;
 position();
 drawc2();
 collision();
@@ -822,14 +946,14 @@ requestAnimationFrame(loop);
 blackbg();
 drawbg();
 draw();
-console.log(yPos + " string " + xPos + " string " + show1);
+console.log(yPos + " string " + xPos + " string " + collide17);
 
 
  }
  
  loop();
 
-
+//in skyward i have a very bad grade but, in schoology i have a good grade and i was wondering why all the assignments in schoology aren't in the skyward gradebook.So i have a question can i have extra work to boost my grade in skyward? 
 </script>
 </body>
 </html>
