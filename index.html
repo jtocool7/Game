@@ -2,22 +2,20 @@
 <html lang="en">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokemon Purple</title>
+  <title>2d platformer Game</title>
   <style>
   *{
     font-family:calibri;
     user-select:none;
   }
   canvas{
-    position:absolute;
-    left:0px;
     border: 1px solid;
     margin: 5px;
   }
   #cvs2{
     border-radius:25px;
    position:absolute;
-   right:-500px;
+   right:-900px;
    bottom:10px;
 
   }
@@ -934,13 +932,9 @@ cvs.width = WIDTH
 cvs.height = HEIGHT
 }*/
 
-/*window.addEventListener('resize', function(){
-resize();
-})*/
-
 function loop() {
 
-cxt.mozImageSmoothingEnabled = false;
+
 position();
 drawc2();
 collision();
