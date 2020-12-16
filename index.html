@@ -2,22 +2,26 @@
 <html lang="en">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokemon Purple</title>
+  <title>2d platformer Game</title>
   <style>
   *{
     font-family:calibri;
     user-select:none;
   }
   canvas{
-    position:absolute;
-    left:0px;
+    
     border: 1px solid;
     margin: 5px;
   }
+    
+    #cvs{
+      position:absolute;
+      left:0px;
+    }
   #cvs2{
     border-radius:25px;
    position:absolute;
-   left:900px;
+   right:900px;
    bottom:10px;
 
   }
@@ -29,7 +33,7 @@
   #bbag{
    border-radius:25px;
    position:absolute;
-    left:950px;
+  left:950px;
    bottom:10px;
   background:white; 
   width:100px;
@@ -49,6 +53,13 @@
   .hide{
     display:none;
   }
+  
+  #next{
+    position:absolute;
+    top:300px;
+    right: -900px;
+  }
+  
   </style>
 </head>
 <body>
@@ -59,6 +70,8 @@
  <canvas id = cvs2 width= 500 height=700> </canvas>
 
 <audio id=starts src="https://vgmsite.com/soundtracks/pokemon-x-y/mewshycd/1-01%20Title%20Screen.mp3"></audio>
+
+<img class = hide id=next  src="https://cdn0.iconfinder.com/data/icons/arrow-153/20/chevron_double_right_small-512.png" width=50px height=50px alt="next">
 <p id=codeMyster>
 code<b>M</b>yster
 </p>
@@ -105,7 +118,8 @@ var state = {
 current : 1,
 startscreen : 0.1,
 start : 0,
-down : 1
+down : 1,
+gft : 2,
 }
 var man = {
 right : false,
@@ -362,7 +376,7 @@ if (evt.keyCode === 39) {
 // downstairs
 
 if(state.current == state.down){
-if (evt.keyCode === 39 && collide10 == false && collide13 == false && collide17 == false && collide20 == false && collide23 == false && collide24 == false) {
+if (evt.keyCode === 39 && collide10 == false && collide13 == false && collide17 == false && collide20 == false && collide23 == false && collide24 == false && collide31 == false && collide33 == false) {
   if(xPos < 800){
  
   
@@ -386,7 +400,7 @@ if (evt.keyCode === 39 && collide10 == false && collide13 == false && collide17 
   
   }
   if(evt.keyCode === 37){
-  if(xPos > 0 && collide6 == false && collide9 == false && collide15 == false && collide16 == false && collide17 == false && collide26 == false && collide27 == false){
+  if(xPos > 0 && collide6 == false && collide9 == false && collide15 == false && collide16 == false && collide17 == false && collide26 == false && collide27 == false && collide30 == false){
   man.down = false;
    man.left = true;
   man.right = false;
@@ -422,7 +436,7 @@ if (evt.keyCode === 39 && collide10 == false && collide13 == false && collide17 
   }
   }
   if(evt.keyCode === 38){
-  if(yPos > 0 && collide8 == false && collide11 == false && collide12 == false && collide18 == false && collide19 == false && collide22 == false){
+  if(yPos > 0 && collide8 == false && collide11 == false && collide12 == false && collide18 == false && collide19 == false && collide22 == false && collide29 == false && collide32 == false){
   man.left = false;
   man.right = false;
   man.down = false;
@@ -440,6 +454,91 @@ if (evt.keyCode === 39 && collide10 == false && collide13 == false && collide17 
   }
   }
 }
+
+
+// green feild town
+
+if(state.current == state.gft){
+if (evt.keyCode === 39 ) {
+  if(xPos < 800){
+ 
+  
+    man.right = true;
+    man.left = false;
+    man.down = false;
+    man.up = false;
+  cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.current += 1;
+  if(speed == false){
+  xPos += 7;
+  }
+  else{
+  if(speed == true){
+  xPos += 10
+  }
+  }
+  
+  
+  }
+  
+  }
+  if(evt.keyCode === 37){
+  if(xPos > 0 ){
+  man.down = false;
+   man.left = true;
+  man.right = false;
+  man.up = false;
+   cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.left += 1;
+  if(speed == false){
+  xPos -= 7;
+  }
+  else{
+  if(speed == true){
+  xPos -= 10;
+  }
+  }
+  }
+  }
+  if(evt.keyCode === 40){
+  if(yPos < 660 ){
+  man.left = false;
+  man.right = false;
+  man.down = true;
+  man.up = false;
+  cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.down += 1;
+  if(speed == false){
+   yPos += 7;
+  }
+ else{
+ if(speed == true){
+ yPos += 10;
+ }
+ }
+  }
+  }
+  if(evt.keyCode === 38){
+  if(yPos > 0 ){
+  man.left = false;
+  man.right = false;
+  man.down = false;
+  man.up = true;
+  cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.up += 1;
+ if(speed == false){
+  yPos -= 7;
+  }
+  else{
+  if(speed = true){
+  yPos -= 10;
+  }
+  }
+  }
+  }
+}
+
+
 // start
  if(evt.keyCode === 32){
  state.current = 0;
@@ -697,7 +796,7 @@ collide11 = true;
 else{
 collide11 = false;
 }
-if(xPos >= 29 && xPos <= 85 && yPos == 342){
+if(xPos >= 29 && xPos <= 85 && yPos == 342 && state.current == 1){
 ttm = true;
 collide12 = true
 if(gift1 == true){
@@ -727,7 +826,7 @@ collide15 = true;
 else{
 collide15 = false;
 }
-if(xPos == 736 && yPos <= 237 && yPos >= 209){
+if(xPos == 736 && yPos <= 237 && yPos >= 209 && state.current == 1){
 state.current = 0;
 xPos = 680;
 yPos = 510;
@@ -826,11 +925,50 @@ collide28 = true;
 else{
 collide28 = false;
 }
+if(yPos == 426 && xPos >= 407 && xPos <= 512){
+collide29 = true;
+}
+else{
+collide29 = false;
+}
+if(xPos == 519 && yPos >= 307 && yPos <= 419){
+collide30 = true;
+}
+else{
+collide30 = false;
+}
+if(yPos >= 247 && yPos <= 314 && xPos == 708){
+collide31 = true;
+}
+else{
+collide31 = false;
+}
+if(xPos >= 715 && xPos <= 806 && yPos == 321){
+collide32 = true;
+}
+else{
+collide32 = false;
+}
+if(xPos == 708 && yPos >= 125 && yPos <= 188){
+collide33 = true;
+}
+else{
+collide33 = false;
+}
+if(xPos >= 302 && xPos <= 664 && yPos >= 622 && yPos <= 664 && state.current == 1){
+state.current = state.gft;
+}
 }
 var collide17 = false;
 var collide18 = false;
 var collide21 = false;
+var collide31 = false;
 var collide22 = false;
+var collide34 = false;
+var collide30 = false;
+var collide32 = false;
+var collide29 = false;
+var collide33 = false;
 var collide24 = false;
 var collide23 = false;
 var collide25 = false;
@@ -853,7 +991,7 @@ for(let i = 0; i <= cvs2.width; i+=15){
 }
 
 drawNet();
-
+var text1 = 1;
 
 
 function drawc2(){
@@ -869,13 +1007,13 @@ cxt2.fillStyle = "white";
   }
 
   
-if(ttm == true){
+if(ttm == true && text1 == 1){
 cxt2.font = "16px calibri";
 cxt2.fillStyle = "#000000";
 cxt2.font = "16px calibri";
 cxt2.fillText('Oh hun, how are you...', cvs2.width / 2 - 40, cvs2.height - 560)
 
-
+ next.classList.remove('hide');
 
 cxt2.font = "16px calibri";
 cxt2.fillStyle = "#000000";
@@ -889,20 +1027,6 @@ cxt2.fillText('you got 10 candy!', cvs2.width / 2 - 40, cvs2.height - 500)
 
 
 
-var seconds = 0;
-if(textMove == true){
-var timer = setInterval(function () {
-if(ttm == true){
-seconds++;
-}
- if(seconds >= 1){
- ttm = false;
- ttm2 = true;
- } 
- 
-}, 1000);
-
-}
 
 
  
@@ -926,6 +1050,12 @@ bbag.style.bottom = cvs2.height/2 - 120 + "px";
 bbag.style.right = cvs2.width - 1010 + "px";
 
 }
+
+next.addEventListener('click',function(){
+ttm = false;
+text1 = 2;
+next.classList.add('hide');
+} )
 
 /*function resize(){
 WIDTH = window.innerWidth
