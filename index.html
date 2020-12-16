@@ -15,7 +15,7 @@
     
     #cvs{
       position:absolute;
-      left:0px;
+      left:0px
     }
   #cvs2{
     border-radius:25px;
@@ -56,7 +56,7 @@
   #next{
     position:absolute;
     top:300px;
-    left: 1350px;
+    left:1350px;
   }
   
   </style>
@@ -93,8 +93,21 @@ char.src = "https://raw.githubusercontent.com/StevePaget/Pygame_Functions/master
 const bg1 = new Image();
 bg1.src = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/627e91b1-1006-47bf-92b0-82f225867117/d9kpu7v-2a161877-7a14-4270-8f41-762b49d63512.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNjI3ZTkxYjEtMTAwNi00N2JmLTkyYjAtODJmMjI1ODY3MTE3XC9kOWtwdTd2LTJhMTYxODc3LTdhMTQtNDI3MC04ZjQxLTc2MmI0OWQ2MzUxMi5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.cJeziDdHBdOuIPSE7ig3SdD1L-Mx8gyAFsBmnKxmm04";
 
+const pkmc = new Image();
+pkmc.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwDd489H1nksY2-gOYB-Bg0nEb32y9PYOnrA&usqp=CAU";
+
 const start = new Image();
 start.src = "https://cdn.discordapp.com/attachments/743458313089581079/779410068256325672/xystart.jpg";
+
+const grass = new Image();
+grass.src = "https://rpgtileset.com/wp-content/uploads/2019/05/d9xkdpm-a3f22a0a-77e9-4aa5-999c-53bab01d0fa4.png";
+
+const irn = new Image();
+irn.src = "https://rpgtileset.com/wp-content/uploads/2019/05/d9xkdvz-fa597608-49d4-4861-b9c1-462848d4ee84.png";
+
+const feildt= new Image();
+feildt.src = "https://rpgtileset.com/wp-content/uploads/2019/05/d9xkdox-e16fa13c-f62d-4f9e-a3f7-c0460c6219df.png";
+
 var frame = {
 current : 0,
 left : 0,
@@ -114,11 +127,12 @@ down : false
 }
 
 var state = {
-current : 1,
+current : 0.1,
 startscreen : 0.1,
 start : 0,
 down : 1,
 gft : 2,
+inpc : 3,
 }
 var man = {
 right : false,
@@ -518,7 +532,88 @@ if (evt.keyCode === 39 ) {
   }
   }
   if(evt.keyCode === 38){
-  if(yPos > 0 ){
+  if(yPos > 0 && collide34 == false){
+  man.left = false;
+  man.right = false;
+  man.down = false;
+  man.up = true;
+  cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.up += 1;
+ if(speed == false){
+  yPos -= 7;
+  }
+  else{
+  if(speed = true){
+  yPos -= 10;
+  }
+  }
+  }
+  }
+}
+
+// pokemon center
+if(state.current == 3){
+if (evt.keyCode === 39 ) {
+  if(xPos < 800){
+ 
+  
+    man.right = true;
+    man.left = false;
+    man.down = false;
+    man.up = false;
+  cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.current += 1;
+  if(speed == false){
+  xPos += 7;
+  }
+  else{
+  if(speed == true){
+  xPos += 10
+  }
+  }
+  
+  
+  }
+  
+  }
+  if(evt.keyCode === 37){
+  if(xPos > 0 ){
+  man.down = false;
+   man.left = true;
+  man.right = false;
+  man.up = false;
+   cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.left += 1;
+  if(speed == false){
+  xPos -= 7;
+  }
+  else{
+  if(speed == true){
+  xPos -= 10;
+  }
+  }
+  }
+  }
+  if(evt.keyCode === 40){
+  if(yPos < 660 ){
+  man.left = false;
+  man.right = false;
+  man.down = true;
+  man.up = false;
+  cxt.clearRect(xPos,yPos,xPos + 40, yPos + 40);
+  frame.down += 1;
+  if(speed == false){
+   yPos += 7;
+  }
+ else{
+ if(speed == true){
+ yPos += 10;
+ }
+ }
+  }
+  }
+  if(evt.keyCode === 38){
+  if(yPos > 0){
   man.left = false;
   man.right = false;
   man.down = false;
@@ -658,8 +753,90 @@ cxt.drawImage(homeac, 676, 298, 39, 41, 374,290, 50,50);
 //mom
 cxt.drawImage(npc1, 737, 442 - 10, 40, 44, 57, 307,45,40);
 }
+//grass
+if(state.current == 2){
+cxt.drawImage(grass, 0,0,98,142,0,0,100,100);
+cxt.drawImage(grass, 0,0,98,142,100,0,100,100);
+cxt.drawImage(grass, 0,0,98,142,200,000,100,100);
+cxt.drawImage(grass, 0,0,98,142,300,0,100,100);
+cxt.drawImage(grass, 0,0,98,142,400,0,100,100);
+cxt.drawImage(grass, 0,0,98,142,500,0,100,100);
+cxt.drawImage(grass, 0,0,98,142,600,0,100,100);
+cxt.drawImage(grass, 0,0,98,142,700,0,100,100);
+cxt.drawImage(grass, 0,0,98,142,800,0,100,100);
+//next row
+cxt.drawImage(grass, 0,0,98,142,0,200,100,100);
+cxt.drawImage(grass, 0,0,98,142,100,200,100,100);
+cxt.drawImage(grass, 0,0,98,142,200,200,100,100);
+cxt.drawImage(grass, 0,0,98,142,300,200,100,100);
+cxt.drawImage(grass, 0,0,98,142,400,200,100,100);
+cxt.drawImage(grass, 0,0,98,142,500,200,100,100);
+cxt.drawImage(grass, 0,0,98,142,600,200,100,100);
+cxt.drawImage(grass, 0,0,98,142,700,200,100,100);
+cxt.drawImage(grass, 0,0,98,142,800,200,100,100);
+//
+cxt.drawImage(grass, 0,0,98,142,0,100,100,100);
+cxt.drawImage(grass, 0,0,98,142,100,100,100,100);
+cxt.drawImage(grass, 0,0,98,142,200,100,100,100);
+cxt.drawImage(grass, 0,0,98,142,300,100,100,100);
+cxt.drawImage(grass, 0,0,98,142,400,100,100,100);
+cxt.drawImage(grass, 0,0,98,142,500,100,100,100);
+cxt.drawImage(grass, 0,0,98,142,600,100,100,100);
+cxt.drawImage(grass, 0,0,98,142,700,100,100,100);
+cxt.drawImage(grass, 0,0,98,142,800,100,100,100);
+//
+cxt.drawImage(grass, 0,0,98,142,0,300,100,100);
+cxt.drawImage(grass, 0,0,98,142,100,300,100,100);
+cxt.drawImage(grass, 0,0,98,142,200,300,100,100);
+cxt.drawImage(grass, 0,0,98,142,300,300,100,100);
+cxt.drawImage(grass, 0,0,98,142,400,300,100,100);
+cxt.drawImage(grass, 0,0,98,142,500,300,100,100);
+cxt.drawImage(grass, 0,0,98,142,600,300,100,100);
+cxt.drawImage(grass, 0,0,98,142,700,300,100,100);
+cxt.drawImage(grass, 0,0,98,142,800,300,100,100);
+//
+cxt.drawImage(grass, 0,0,98,142,0,400,100,100);
+cxt.drawImage(grass, 0,0,98,142,100,400,100,100);
+cxt.drawImage(grass, 0,0,98,142,200,400,100,100);
+cxt.drawImage(grass, 0,0,98,142,300,400,100,100);
+cxt.drawImage(grass, 0,0,98,142,400,400,100,100);
+cxt.drawImage(grass, 0,0,98,142,500,400,100,100);
+cxt.drawImage(grass, 0,0,98,142,600,400,100,100);
+cxt.drawImage(grass, 0,0,98,142,700,400,100,100);
+cxt.drawImage(grass, 0,0,98,142,800,400,100,100);
+//
+cxt.drawImage(grass, 0,0,98,142,0,500,100,100);
+cxt.drawImage(grass, 0,0,98,142,100,500,100,100);
+cxt.drawImage(grass, 0,0,98,142,200,500,100,100);
+cxt.drawImage(grass, 0,0,98,142,300,500,100,100);
+cxt.drawImage(grass, 0,0,98,142,400,500,100,100);
+cxt.drawImage(grass, 0,0,98,142,500,500,100,100);
+cxt.drawImage(grass, 0,0,98,142,600,500,100,100);
+cxt.drawImage(grass, 0,0,98,142,700,500,100,100);
+cxt.drawImage(grass, 0,0,98,142,800,500,100,100);
+//
+cxt.drawImage(grass, 0,0,98,142,0,600,100,100);
+cxt.drawImage(grass, 0,0,98,142,100,600,100,100);
+cxt.drawImage(grass, 0,0,98,142,200,600,100,100);
+cxt.drawImage(grass, 0,0,98,142,300,600,100,100);
+cxt.drawImage(grass, 0,0,98,142,400,600,100,100);
+cxt.drawImage(grass, 0,0,98,142,500,600,100,100);
+cxt.drawImage(grass, 0,0,98,142,600,600,100,100);
+cxt.drawImage(grass, 0,0,98,142,700,600,100,100);
+cxt.drawImage(grass, 0,0,98,142,800,600,100,100);
+//
+cxt.drawImage(irn,527,557,245,209,0,0,cvs.width / 2 / 1.5, 200);
+//
+cxt.drawImage(feildt,0,30,336,210, 200,420,cvs.width / 2 / 1.5 , 200);
+//
+cxt.drawImage(feildt,0,263,235,220, 450, 150, cvs.width / 2 / 1.5 , 200)
+}
+if(state.current == 3){
+cxt.drawImage(pkmc,-28,-38,cvs.width + 56,cvs.height + 100);
+
+}
 if(state.current == 0.1){
-cxt.drawImage(start,0,0,cvs.width + 30,cvs.height);
+cxt.drawImage(start,0,0,cvs.width + 32,cvs.height);
 starts.play();
 }
 }
@@ -957,15 +1134,26 @@ collide33 = false;
 if(xPos >= 302 && xPos <= 664 && yPos >= 622 && yPos <= 664 && state.current == 1){
 state.current = state.gft;
 }
+if(yPos == 195 && xPos >= -6 && xPos <= 78 || xPos >= 162 && xPos <= 267 && yPos == 195){
+collide34 = true;
+}
+else{
+collide34 = false;
+}
+if(xPos >= 85 && xPos <= 155 && yPos <= 195){
+state.current = 3
+}
 }
 var collide17 = false;
 var collide18 = false;
 var collide21 = false;
 var collide31 = false;
+var collide35 = false;
 var collide22 = false;
 var collide34 = false;
 var collide30 = false;
 var collide32 = false;
+var collide34 = false;
 var collide29 = false;
 var collide33 = false;
 var collide24 = false;
