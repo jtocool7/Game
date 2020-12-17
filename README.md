@@ -1,4 +1,5 @@
 This Is A Game Based Off on Pokemon Red 
+You can use it just make sure you credit me
 The Environment Is Created by tils from various pokemon games.
 Link to these tiles is https://rpgtileset.com/other/pokemon-assets-for-rmmv/.
 Still in early development
