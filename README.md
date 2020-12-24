@@ -17,3 +17,7 @@ more collision gave it a name pokemon purple
 
 ver 2.0 12/16/2020
 Finnished the second floor finally when walk on the mat you go into a black space because i have not coded the enviornment yet.
+
+ver 2.1 12/24/2020
+Added name system & finished layout for the 1st town you go to 
+fixed glitch that allowed you to go to the bedroom when pressing the spacebar and another glitch that allowed you to leave the house early when standing by the plant.
