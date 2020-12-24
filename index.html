@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2d platformer Game</title>
+  <title>Pokemon Purple</title>
   <style>
   *{
     font-family:calibri;
@@ -62,8 +62,8 @@
     #pname{
     border-radius:5px;
     position:absolute;
-    top:200px;
-    left:1350px;
+    top:400px;
+    left:1980px;
   
    
   }
@@ -71,10 +71,10 @@
   </style>
 </head>
 <body>
-
+<center>
  <canvas id=cvs width= 835px height= 701px> </canvas>
 
- 
+ </center>
  <canvas id = cvs2 width= 500 height=700> </canvas>
 
 <audio id=starts src="https://vgmsite.com/soundtracks/pokemon-x-y/mewshycd/1-01%20Title%20Screen.mp3"></audio>
@@ -84,6 +84,7 @@
 code<b>M</b>yster
 </p>
 <input class=hide id = pname placeholder = "Enter Name" maxlength = "15">
+
 <div  id=bbag>
 <p id=bagw>
 BAG
@@ -1413,7 +1414,7 @@ var collide25 = false;
 var collide28 = false;
 var collide27 = false;
 var collide26 = false;
-
+var n1 = false;
 var collide15 = false;
 var collide19 = false;
 var collide20 = false;
@@ -1490,7 +1491,8 @@ cxt2.font = "16px calibri";
 cxt2.fillText('Oh! I remember it is ' + pname.value, cvs2.width / 2 - 250, cvs2.height - 560)
 cxt2.fillText('Go over to that brige it will take you to the other part of town. ', cvs2.width / 2 - 250, cvs2.height - 520)
 cxt2.fillText('Go to the pkm prof lab and go get a pkm!', cvs2.width / 2 - 250, cvs2.height - 500)
-
+next.classList.remove('hide');
+n1 = true;
 }
  
 if(show1 == true){
@@ -1528,8 +1530,9 @@ ttg1 = false;
 ttg1c = true;
 
 }
-if(ttg1c == true){
+if(ttg1c == true && n1 == true){
 ttg1c = false;
+next.classList.add('hide');
 }
 
 } )
@@ -1559,6 +1562,8 @@ console.log(yPos + " string " + xPos + " string " + pname.value);
  }
  
  loop();
+
+
 </script>
 </body>
 </html>
