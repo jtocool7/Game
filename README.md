@@ -21,3 +21,11 @@ Finnished the second floor finally when walk on the mat you go into a black spac
 ver 2.1 12/24/2020
 Added name system & finished layout for the 1st town you go to 
 fixed glitch that allowed you to go to the bedroom when pressing the spacebar and another glitch that allowed you to leave the house early when standing by the plant.
+
+ver 2.2 12/30/2020
+fixed small glitch where when about to go outside it asks you to enter your name without talking to npc.
+
+NOT RELATED TO THIS UPDATE:
+this should be the last update of this year so happy new year should be releasing new game tomorrow on new years eve should be done with this game "ssf" by late january to late feb becuase i will be working in pkm purple project while working on this new game.
+There will be a few characters to work on so that is why i predict mid to late feb.
+Have a happy new year!.
