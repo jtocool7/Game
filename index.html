@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokemon Purple</title>
+  <title>2d platformer Game</title>
   <style>
-  *{
+*{
     font-family:calibri;
     user-select:none;
   }
@@ -12,7 +12,7 @@
     border: 1px solid;
     margin: 5px;
   }
-    
+
     #cvs{
       position:absolute;
       left:0px
@@ -39,33 +39,33 @@
   height:100px;
 
   text-align:center;
-  
+
   }
-  
+
   #bagw{
     position:absolute;
     top:25px;
     right:34px;
     text-align:center;
   }
-  
+
   .hide{
     display:none;
   }
-  
+
   #next{
     position:absolute;
     top:300px;
     left:1350px;
   }
-    
+
     #pname{
     border-radius:5px;
     position:absolute;
     top:400px;
     left:910px;
   z-index:1;
-   
+
   }
   
   </style>
@@ -137,7 +137,7 @@ down : false
 }
 
 var state = {
-current : 0.1,
+current : 2,
 startscreen : 0.1,
 start : 0,
 down : 1,
@@ -1382,7 +1382,7 @@ state.current = 1;
 if(xPos == 78 && yPos >= 314 && yPos <= 349 && state.current == 2){
 state.current = 4;
 }
-if(xPos == 358 && yPos >= 615 && yPos <= 664){
+if(xPos == 358 && yPos >= 615 && yPos <= 664 && state.current == state.gft){
 collide38 = true;
 ttg1 = true;
 }
@@ -1538,7 +1538,7 @@ next.classList.add('hide');
 } )
 
 
-
+// https://hastebin.com/pecuveqedi.css github css file :)
 /*function resize(){
 WIDTH = window.innerWidth
 HEIGHT = window.innerHeight
